@@ -44,17 +44,18 @@ section {
 .logo {
     font-size: 2.5rem;
     font-weight: 600;
-    cursor: pointer;
+    cursor: default;
 }
 
-.sBody a {
+.sBody a,
+.sBody .active {
     font-size: 1.7rem;
     color: var(--text-color);
     margin-left: 4rem;
+    transition: color 0.3s;
 }
 
-.sBody a:hover, 
-.sBody a.active {
+.sBody a:hover {
     color: var(--main-color);
 }
 

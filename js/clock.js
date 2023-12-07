@@ -7,23 +7,23 @@ let showTime = () => {
     let minutes = newDate.getMinutes();
     let seconds = newDate.getSeconds();
     let day = newDate.getDate();
-    let month = newDate.getMonth() + 1 ;
+    let month = newDate.getMonth();
     let year = newDate.getFullYear();
 
-    let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    let months = ['January','February','March','April','May','June','July','August','September', 'October', 'November','December'];
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    month = months[month - 1];
+    let amPm = (hour < 12) ? 'AM' : 'PM';
+    hour = (hour > 12) ? hour - 12 : hour;
+    hour = (hour < 10) ? '0' + hour : hour;
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
 
-    let hr = (hour > 12) ? hour - 12 : hour;
-    let am = (hour < 12) ? 'AM' : 'PM';
+    let dayOfWeek = days[newDate.getDay()];
+    let monthName = months[month];
 
-    if(hour < 10) { hour = '0' + hour }
-    if(minutes < 10) { minutes = '0' + minutes }
-    if(seconds < 10) { seconds = '0' + seconds }
-
-    numbers.textContent = `${hr}:${minutes}:${seconds} ${am}`;
-    dataDate.textContent = `${month} ${day}, ${year}`;
-}
+    numbers.textContent = `${hour}:${minutes}:${seconds} ${amPm}`;
+    dataDate.textContent = `${dayOfWeek}, ${monthName} ${day}, ${year}`;
+};
 
 setInterval(showTime, 1000);
